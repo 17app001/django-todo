@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{user}}
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="username">帳號</label>
+        <input type="text" name="username" id="username"><br>
+        <label for="password">密碼</label>
+        <input type="password" name="password" id="password"><br>
+        <p>
+            <input type="submit" name="login" value="登入">
+            <input type="submit" name="register" value="註冊">
+            <button type="reset">清除</button>
+        </p>
+    </form>
+    <div style="color: red;">{{message}}</div>
+</body>
+
+</html>
