@@ -4,4 +4,13 @@
 <h1>Todolist</h1>
 
 
+{% for todo in todos %}
+
+<h2>{{todo.title}}</h2>
+<li>{{todo.text}}</li>
+<li>{{todo.created}}</li>
+<li>{{todo.important}}</li>
+
+{% endfor %}
+
 {% endblock %}
