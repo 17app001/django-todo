@@ -1,15 +1,59 @@
 {% extends "base.html" %}
 
+{% block style %}
+
+<head>
+
+    <style>
+        .title {
+            font-size: 24px;
+            color: blue;
+        }
+
+        .todo-body {
+            background-color: white;
+            width: 300px;
+            text-align: left;
+            margin: 6px auto;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .created {
+            color: palevioletred;
+            text-align: center;
+            font-size: small;
+        }
+
+        .text {
+            text-align: left;
+            margin: 6px 0;
+        }
+    </style>
+
+</head>
+
+{% endblock %}
+
+
+
 {% block content %}
 <h1>Todolist</h1>
 
 
 {% for todo in todos %}
+<br>
 
-<h2>{{todo.title}}</h2>
-<li>{{todo.text}}</li>
-<li>{{todo.created}}</li>
-<li>{{todo.important}}</li>
+<div class="title">{{todo.title}}</div>
+<div class="todo-body">
+    <div class="created">{{todo.created}}</div>
+    <div class="text">
+        {{todo.text|linebreaksbr}}
+    </div>
+    <p>
+        {{todo.important}}
+    </p>
+</div>
 
 {% endfor %}
 

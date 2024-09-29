@@ -9,6 +9,8 @@
         body {
             margin: 0;
             padding: 0;
+            background-color: rgb(219, 241, 234);
+
         }
 
         #navbar {
@@ -30,13 +32,24 @@
             border-radius: 3px;
             margin-left: 12px;
         }
+
+        #container {
+            text-align: center;
+            padding: 12px;
+        }
     </style>
+
+    {% block style %}
+
+    {% endblock %}
 </head>
 
 <body>
     <div id="navbar">
         {% if user.is_authenticated %}
-        使用者:<span class="username"> {{user.username}}</span>
+        使用者:<span class="username">
+            <a href="{% url 'profile' %}"> {{user.username}}</a>
+        </span>
 
         <a class="button" style="background-color: red;color:white" href="{% url 'logout' %}">登出</a>
         {% else %}
@@ -45,11 +58,14 @@
         {% endif %}
         <a class="button" style="background-color: white;" href="/">回首頁</a>
     </div>
-    {% block content %}
+    <div id="container">
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
 
-    <div style="color: red;">{{message}}</div>
+
+        <div style="color: red;">{{message}}</div>
+    </div>
 </body>
 
 </html>
