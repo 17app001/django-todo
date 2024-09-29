@@ -52,6 +52,7 @@
         </span>
 
         <a class="button" style="background-color: red;color:white" href="{% url 'logout' %}">登出</a>
+        <a class="button" style="background-color: rgb(44, 219, 73);color:black" href="{% url 'create-todo' %}">新增</a>
         {% else %}
         <a class="button" style="background-color: aqua;" href="{% url 'login' %}">登入</a>
         <a class="button" href="{% url 'register' %}">註冊</a>

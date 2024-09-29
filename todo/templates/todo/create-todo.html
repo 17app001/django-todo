@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>Todo</h1>
+<div class="title">{{todo.title}}</div>
+<form style="text-align: left; margin: 0 auto;width: 300px;" action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">新增</button>
+    <button type="reset">清空</button>
+
+</form>
+{% endblock %}

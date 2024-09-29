@@ -13,7 +13,7 @@
         .todo-body {
             background-color: white;
             width: 300px;
-            text-align: left;
+            text-align: center;
             margin: 6px auto;
             padding: 12px;
             border-radius: 12px;
@@ -26,8 +26,16 @@
         }
 
         .text {
+            padding: 12px;
+            border-radius: 6px;
+            background-color: rgb(202, 202, 202);
             text-align: left;
             margin: 6px 0;
+        }
+
+        .todo {
+            margin: 12px;
+            display: inline-block;
         }
     </style>
 
@@ -42,19 +50,22 @@
 
 
 {% for todo in todos %}
-<br>
-
-<div class="title">{{todo.title}}</div>
-<div class="todo-body">
-    <div class="created">{{todo.created}}</div>
-    <div class="text">
-        {{todo.text|linebreaksbr}}
+<div class="todo">
+    <div class="todo-body">
+        <div class="title">{{todo.title}}</div>
+        <div class="created">{{todo.created}}</div>
+        <div class="text">
+            {{todo.text|linebreaksbr}}
+        </div>
+        <p>
+            {{todo.important}}
+        </p>
+        <div class="created" style="color:rgb(122, 122, 122)">
+            {{todo.date_completed}}
+        </div>
+        <a href="{% url 'delete-todo' todo.id %}" onclick="return confirm('你確定要刪除這個待辦事項嗎？');">刪除</a>
     </div>
-    <p>
-        {{todo.important}}
-    </p>
 </div>
-
 {% endfor %}
 
 {% endblock %}
