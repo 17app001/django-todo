@@ -9,6 +9,7 @@
         body {
             margin: 0;
             padding: 0;
+            background-color: rgb(255, 249, 243);
         }
 
         #navbar {
@@ -30,7 +31,14 @@
             border-radius: 3px;
             margin-left: 12px;
         }
+
+        #container {
+            text-align: center;
+
+        }
     </style>
+    {% block style %}
+    {% endblock %}
 </head>
 
 <body>
@@ -47,11 +55,12 @@
         {% endif %}
         <a class="button" style="background-color: white;" href="/">回首頁</a>
     </div>
-    {% block content %}
+    <div id="container">
+        {% block content %}
+        {% endblock %}
 
-    {% endblock %}
-
-    <div style="color: red;">{{message}}</div>
+        <div style="color: red;">{{message}}</div>
+    </div>
 </body>
 
 </html>
