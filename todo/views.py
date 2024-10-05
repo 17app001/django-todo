@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Todo
 from .forms import TodoForm
+from datetime import datetime
 
 
 # 新增代辦事項
@@ -37,6 +38,14 @@ def todo(request, id):
     try:
         todo = Todo.objects.get(id=id, user=user)
         form = TodoForm(instance=todo)
+        if request.method == "POST":
+            form = TodoForm(request.POST, instance=todo)
+            todo = form.save(commit=False)
+            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            todo.date_completed = now if todo.completed else None
+            todo.save()
+            message = "更新成功!"
+            return redirect("todolist")
     except Exception as e:
         print(e)
         message = "編號錯誤"

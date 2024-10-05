@@ -69,8 +69,8 @@
     <div class="completed" {% if todo.date_completed %} style="background-color: aqua; margin: 2px;
     border-radius: 3px;" {% else %} style="background-color: rgb(0, 163, 163); margin: 2px;color: white;
     border-radius: 3px;" {% endif %}>
-        {% if todo.date_completed %}
-        <span style="color:blue">已完成</span>
+        {% if todo.completed %}
+        <span style="color:blue">已完成:{{todo.date_completed}}</span>
         {% else %}
         進行中
         {% endif %}
