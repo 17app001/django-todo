@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+<head>
+    <style>
+        .title {
+            background-color: aqua;
+            font-size: 32px;
+            margin: 12px 0;
+        }
+
+        .text {
+            height: 200px;
+            text-align: center;
+            padding: 12px;
+            background-color: rgb(229, 229, 229);
+            margin: 12px;
+            border-radius: 3px;
+        }
+
+        .imp {
+            text-align: right;
+            margin: 1px 12px;
+        }
+
+        .created {
+            font-size: small;
+            text-align: left;
+            margin: 6px;
+        }
+    </style>
+
+</head>
+
+{% block content %}
+<h1>Todo</h1>
+{% if todo %}
+<div class="created">建立時間:{{todo.created}}</div>
+<div class="title">標題:{{todo.title}}</div>
+<div class="text">內容:{{todo.text}}</div>
+<div class="imp">
+    是否重要:{% if todo.important %}
+    <span style="color:red">重要</span>
+    {% else %}
+    <span style="color:blue">一般</span>
+    {% endif %}
+</div>
+<div>完成時間:{{todo.date_completed}}</div>
+{% endif %}
+{% endblock %}

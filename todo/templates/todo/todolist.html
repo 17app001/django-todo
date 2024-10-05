@@ -29,7 +29,6 @@
         .imp {
             text-align: right;
             margin: 1px 12px;
-            color: blue;
         }
 
         .created {
@@ -51,9 +50,17 @@
 {% for todo in todos %}
 <div class="todo">
     <div class="created">{{todo.created}}</div>
-    <div class="title">{{todo.title}}</div>
+    <div class="title">
+        <a href="{% url 'todo' todo.id %}">{{todo.title}}</a>
+    </div>
     <div class="text">{{todo.text}}</div>
-    <div class="imp"> {{todo.important}}</div>
+    <div class="imp">
+        {% if todo.important %}
+        <span style="color:red">*重要</span>
+        {% else %}
+        <span style="color:blue">一般</span>
+        {% endif %}
+    </div>
 </div>
 {% endfor %}
 
