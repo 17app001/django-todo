@@ -4,6 +4,9 @@ from .models import Todo
 
 # Create your views here.
 def todolist(request):
-    todos = Todo.objects.all()
-    print(todos)
+    user = request.user
+    todos = None
+    if user.is_authenticated:
+        todos = Todo.objects.filter(user=user)
+
     return render(request, "todo/todolist.html", {"todos": todos})
